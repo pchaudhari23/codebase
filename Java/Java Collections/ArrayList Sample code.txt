@@ -1,0 +1,46 @@
+// Use switch case for operations 
+// Refer edureka collections tutorial
+
+package Edureka;
+import java.util.*;
+
+public class Constructor
+{
+	public static void main(String args[])
+	{
+		ArrayList<String> a = new ArrayList<String>();
+		int counter = 0;
+		
+		for (String s:a)
+		{
+			counter++;
+		}
+
+		System.out.println("No Arguments:(Can't obtain)"+counter);
+		
+		ArrayList<String> b = new ArrayList<String>(30);
+		counter = 0;
+		
+		for (String s:b)
+		{
+			counter++;
+		}
+		
+		System.out.println("No Arguments with capacity:(Can't obtain)"+counter);
+		System.out.println();
+		
+		String sArray[] = {"Hadoop","BigData","Java","Python"};
+		List<String> list = Arrays.asList(sArray);
+		ArrayList<String> c = new ArrayList<String>(list);
+		c.add("J2EE");
+		
+		for (String s:c)
+		System.out.println("ArrayList c element : "+s);
+		
+		
+	
+	}
+
+		
+		
+}

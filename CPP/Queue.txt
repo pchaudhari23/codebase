@@ -1,0 +1,180 @@
+// Queue using array
+// Queue is a linear data structure which follows FIFO(First In First Out) rule
+
+#include<iostream>
+using namespace std;
+
+#define CAPACITY 5
+
+class Queue
+{
+
+	private:
+		int queue[CAPACITY];   //Integer array named queue of size CAPACITY	
+		int front = 0;
+		int rear = 0;          // fornt and rear need to point at starting position initially
+	
+	public:
+
+//------------------------------Enqueue-----------------------------------------------------------
+	bool enqueue(int element)         //add element to the queue
+	{
+		if (CAPACITY == rear)
+		{
+		cout<<"Queue is full. "<<endl;
+		return false;
+		}
+		else
+		{
+			queue[rear] = element;			
+			rear++;
+			return true;
+		}
+	}
+	
+//------------------------------Dequeue-----------------------------------------------------------
+	void dequeue()                    //delete element from the queue
+	{
+		if (front == rear)
+		{
+		cout<<"Queue is already empty. "<<endl;
+		}
+		else
+		{
+		cout<<"Element "<<queue[front]<<" deleted successfully from queue."<<endl;
+		for (int i=0; i<rear-1; i++)
+		{
+		queue[i]=queue[i+1];
+		}
+		rear-- ;
+		}			
+	}
+
+//------------------------------Display-----------------------------------------------------------
+	void display()
+	{
+		if (front == rear)
+		cout<<"Queue is empty. "<<endl;
+		else
+		{
+			cout<< "Queue elements are : ";
+			for (int i=front; i < rear; i++)
+			{
+				cout<<queue[i]<<" ";
+			}
+			cout<<endl;
+		}
+	}
+
+//------------------------------Is Empty----------------------------------------------------------
+	bool isEmpty()
+	{
+	if (front == rear)
+	return true;
+	else 
+	return false;	
+	}
+
+//------------------------------Is Full-----------------------------------------------------------
+	bool isFull()
+	{
+	if (rear == CAPACITY)
+	return true;
+	else
+	return false;
+	}
+
+//------------------------------Front element-----------------------------------------------------
+	int frontelement()
+	{
+		return queue[front];
+	}
+//------------------------------Back element------------------------------------------------------
+	int backelement()
+	{
+		return queue[rear-1];
+	}
+};
+
+
+//------------------------------Main--------------------------------------------------------------
+int main()
+{
+
+Queue qu;
+
+while(1)
+{
+	int choice,element,result;
+
+	cout<<"---------------------------------------------"<<endl;
+	cout<<"    PROGRAM FOR QUEUE IMPLEMENTATION    "<<endl;
+	cout<<"---------------------------------------------"<<endl;
+	cout<<"1. Add element(Enqueue)"<<endl;
+	cout<<"2. Remove element(Dequeue)"<<endl;
+	cout<<"3. Display queue"<<endl;
+	cout<<"4. Is queue empty???"<<endl;
+	cout<<"5. Is queue full???"<<endl;
+	cout<<"6. Show front element"<<endl;
+	cout<<"7. Show back element"<<endl;
+	cout<<"8. Exit"<<endl;
+	cout<<endl;
+	cout<<"Enter your choice: ";
+
+	cin>>choice;
+
+	switch(choice)
+	{
+		case 1:
+		cout<<"Enter element : ";
+		cin>>element;
+		if(qu.enqueue(element))
+		cout<<"Element "<<element<<" added successfully to the queue."<<endl;
+		break;
+		
+		case 2:
+		qu.dequeue();
+		break;
+		
+		case 3:
+		qu.display();
+		break;
+		
+		case 4:
+		if(qu.isEmpty())
+		cout<<"Queue is Empty."<<endl;
+		else
+		cout<<"Queue is not empty."<<endl;
+		break;
+		
+		case 5:
+		if(qu.isFull())
+		cout<<"Queue is full."<<endl;
+		else
+		cout<<"Queue is not full."<<endl;
+		break;
+		
+		case 6:
+		result = qu.frontelement();
+		cout<<result<<" is the front element."<<endl;
+		break;
+		
+		case 7:
+		result = qu.backelement();
+		cout<<result<<" is the back element."<<endl;
+		break;
+		
+		case 8:
+		exit(0);
+
+		default:
+		cout<<"Enter a valid choice!!!"<<endl;
+		cout<<endl;
+
+	}
+	
+}
+
+return 0;
+}
+

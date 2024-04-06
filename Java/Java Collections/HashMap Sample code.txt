@@ -1,0 +1,2 @@
+// Use switch case for operations 
+// Refer edureka collections tutorial

@@ -1,0 +1,112 @@
+package Edureka;
+import java.util.*;
+
+public class ArrayList
+{
+	public static void main (String args[])
+	{
+		ArrayList a1 = new ArrayList();
+		Object CloneList;
+		a1.add("Edureka");
+		a1.add("Java");
+		a1.add("Arrays");
+		
+		System.out.println("Size of arraylist : "+a1.size());
+		
+		System.out.println("Contents of a1:"+a1);
+		
+		a1.remove("Java");
+		
+		System.out.println("Size of arraylist after deletion : "+a1.size());
+		
+		System.out.println("Contents of a1: "+a1);
+		
+		cloneList=a1.clone();
+		
+		System.out.println("Elements in the cloned list are : ");
+		System.out.println(cloneList);
+		
+		
+		Object[] objArray = a1.toArray();
+		System.out.println("Elements in the array list are : ");
+		
+		for (int i=0; i<objArray.length; i++)
+		System.out.println(objArray[i]);
+		
+		a1.clear();
+		System.out.println("ArrayList after clearing"+a1);
+		
+		
+		
+	}
+		
+}
+
+
+package Edureka;
+import java.util.*;
+
+public class CustomArray
+{
+	
+	int i, n = 4;
+	
+	class StudData
+	{
+		int roll;
+		String name;
+		int marks;
+		long phone;
+		
+		StudData(int roll, String name, int marks, long phone)
+		{
+			this.roll=roll;
+			this.name=name;
+			this.marks=marks;
+			this.phone=phone;
+			
+		}
+	}
+	
+	public static void main(String args[])
+	{
+		int roll[] = {1,2,3,4};
+		String name[] = {"Kriss", "Frankie", "Jhon","Avin"};
+		int marks[]= {100,99,95,94};
+		int phone[] = {9730373717L,9730373717L,9730373717L,9730373717L};
+		
+		CustomArray ca = new CustomArray();
+		ca.addValues(roll,name,marks, phone);
+		
+		
+	}
+	
+	
+	public void addValues(int roll[], String name[], int marks[],long phone[])
+	{
+		for(int i=0; i<n;i++)
+		{
+			list.add(new StudData(roll[i], name[i], marks[i], phone[i]));
+		}
+		
+		printValue(list);
+	}
+	
+	public void printValues(ArrayList<Data> list)
+	{
+		for(int i = 0; i<n; i++)
+		{
+			StudData data = (studData) list.get(i);
+			System.out.println(data.roll+" "+data.name+" "+data.marks+" "+data.phone);
+			
+		}
+		
+		list.remove(i);
+		System.out.println("Size of the list: "+list.size());
+		for (Data Value : list)
+		{
+			System.out.println("Value = "+Value.name);
+			printValue(list);
+		}
+	}
+}

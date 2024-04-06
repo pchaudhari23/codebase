@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+int i;
+int sum = 0;
+
+int arr[] = {16, 24, 8, 60, 35, 44, 51, 71};
+int n = sizeof(arr)/sizeof(arr[0]);
+
+cout<<"The array elements are: [ ";
+
+for (i=0; i<n; i++)
+{
+cout<<arr[i]<<" ";
+}
+
+cout<<"]"<<endl;
+
+for(i=0; i<n; i++)
+{
+    sum=sum+arr[i];
+}
+
+int average = sum/ n;
+cout<<"Average of all elements is : "<<average<<endl;
+
+return 0;
+}

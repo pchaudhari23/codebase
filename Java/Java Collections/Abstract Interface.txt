@@ -1,0 +1,88 @@
+1. Abstract class in java :   //non abstract methods are called concrete methods
+
+- In Java, an instance of an abstract class cannot be created, we can have references of abstract class type though.
+- An abstract class can contain constructors in Java. And a constructor of abstract class is called when an instance 
+of a inherited class is created.
+- In Java, we can have an abstract class without any abstract method. This allows us to create classes that cannot 
+be instantiated, but can only be inherited.
+- Abstract classes can also have final methods (methods that cannot be overridden).
+
+---------------------------------------------------------------------------------------
+
+abstract class Car
+{
+	abstract void engine(); //abstract method - no implementation
+	
+	void gearbox()   //non abstract method
+	{
+		System.out.println("Automatic gear change");
+	}
+}
+
+class Audi extends Car    //child class derived from abstract class
+{
+	void engine()
+	{
+		System.out.println("Powerful V12 Engine.");
+	}
+}
+
+class Main
+{
+
+	public static void main(String args[])
+	{
+		Car Q7 = new Audi();    /* create an object of class Audi, 
+								since object of Car class(abstract) class 
+								cannot be created i.e car class cannot be instantiated */ 
+		Q7.engine();      //call the derived class method
+	}
+
+}
+============================================================================================================================
+2. Interface in JAVA: 
+- By default all methods are abstract and all the fields are public, static and final
+
+// Interface declaration by the first user
+interface Drawable
+{
+	void draw();  
+}
+
+//Interface implementation by second user
+class Rectangle implements Drawable
+{
+	public void draw()
+	{
+		System.out.println("Drawing a Rectangle");
+	}
+}
+
+class Circle implements Drawable
+{
+	public void draw()
+	{
+		System.out.println("Drwaing a circle");
+	}
+
+}
+
+//Interface used by the third person
+class Main
+{
+	public static void main(String args[])
+	{
+		Drawable D = new Circle();
+		D.draw();    // prints "Drawing a circle"
+	}
+}
+============================================================================================================================
+3. Abstract class in C#:
+
+
+============================================================================================================================
+4. Interface in C#:
+
+
+============================================================================================================================
+

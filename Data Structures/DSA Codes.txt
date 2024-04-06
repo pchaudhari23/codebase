@@ -1,0 +1,56 @@
+ARRAY OPERATIONS:
+1. Selection sort
+2. Insertion sort
+3. Bubble sort
+4. Quick sort 
+5. Merge sort
+6. Iterative Linear search
+7. Recursive Linear search
+8. Iterative Binary search
+9. Recursive Binary search
+10. Inserting an element at index
+11. Deleting an element at index
+12. Find minimum value
+13. Find maximum value
+14. Reverse display the array elements
+15. Reverse array elements
+16. Average of array elements
+17. Determine if array contains any duplicates
+18. Count number of elements in the array
+19. Merge two arrays
+20. Swap array elements
+
+==================================================================================================================================
+SINGLY LINKED LIST:
+1. Insert at begin
+2. Insert at end (append)
+3. Insert at position
+4. Delete from begin
+5. Delete from end
+6. Delete from position
+7. Find linked list length
+8. Swap two nodes (i. with previous elements, ii. with next elements, iii. with two distant elements)
+9. Sort the linked list
+10. Search an element in linked list
+11. Display the linked list elements
+12. Reverse the linked list elements
+13. Merge two linked lists
+14. 
+
+==================================================================================================================================
+STRING OPERATIONS:
+1. Searching a word
+2. Sarching multiple occurances of a word
+3. String reversal
+4. String slicing
+5. Case conversions - lower to upper, upper to lower
+6. Validations - No special characters etc.
+7. Palindrome
+8. Regexp based
+
+==================================================================================================================================
+MISCELLENEOUS:
+1. Factorial
+2. Permutaions and combinations
+
+==================================================================================================================================

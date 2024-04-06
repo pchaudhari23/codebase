@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+
+void Insertion(int arr[],int n)
+{
+int i,j,key;
+for (i=1; i<n; i++)
+{
+key=arr[i];
+j=i-1;
+while (j>=0 && arr[j] > key)
+{
+arr[j + 1] = arr[j]; 
+j = j - 1;  
+} 
+arr[j + 1] = key;  
+}
+}
+
+void PrintSortedArray(int arr[], int n)
+{
+cout<<"The sorted array is: [ ";
+
+for ( int i=0; i<7; i++)
+{
+cout<<arr[i]<<" ";
+}
+
+cout<<"]"<<endl;
+    
+}
+
+
+
+int main()
+{
+int i;
+int arr[7] = {16, 24, 8, 60, 35, 44, 51};
+
+int n = sizeof(arr)/sizeof(arr[0]);
+
+cout<<"The array elements are: [ ";
+
+for (i=0; i<7; i++)
+{
+cout<<arr[i]<<" ";
+}
+
+cout<<"]"<<endl;
+
+Insertion(arr,n);
+PrintSortedArray(arr,n);
+return 0;
+}

@@ -1,0 +1,201 @@
+//Stack using Linked List
+//Stack is a linear data structure which follows LIFO(Last In First Out) rule
+
+
+#include<iostream>
+using namespace std;
+
+struct node 
+{
+	int data;
+	struct node* link;  //pointer variable of node type
+};
+
+
+class Stack
+{
+
+	private:
+		struct node* top;  //global variable
+	
+	public:
+		Stack()
+		{
+			top=NULL;
+		}		
+		
+//--------------------------------Push element----------------------------------------------------
+	bool push(int element)
+	{
+		struct node* temp;
+		temp = new node;
+		temp->data = element;
+		temp->link = top;
+		top = temp;
+		return true;
+	}
+	
+//--------------------------------Pop element-----------------------------------------------------
+	int pop()
+	{
+		int res;
+		struct node* temp;
+		if (top == NULL)
+		cout<<"Stack is empty."<<endl;
+		else
+		{
+		temp = top;
+//		cout<<temp->data<<" is the top element"<<endl;
+		top = top->link;
+		temp->link = NULL;
+		res = temp->data;
+		delete temp;
+		return res;
+		}
+	}
+	
+//--------------------------------Peek on top-----------------------------------------------------
+	int peek()
+	{
+		struct node* temp;
+		if (top == NULL)
+		cout<<"Stack is empty."<<endl;
+		else
+		{
+		temp = top;
+		cout<<temp->data<<" is the top element"<<endl;	
+		return temp->data;
+		}
+	}
+	
+//--------------------------------Is Empty--------------------------------------------------------
+	bool isEmpty()
+	{
+		return (top == NULL);
+	}
+	
+//--------------------------------Is Full---------------------------------------------------------
+	bool isFull()
+	{
+		int length = count();
+		//return (top == length-1);
+	}
+	
+//--------------------------------Count-----------------------------------------------------------
+	int count()
+	{
+		int numberOfElements = 0;			
+		struct node* temp;
+		temp = top;
+			
+		while (temp != NULL)
+		{
+		numberOfElements++;
+		temp = temp->link;
+		}
+		return numberOfElements;	
+	}
+//--------------------------------Display---------------------------------------------------------	
+	void display()
+	{
+		struct node* temp;
+		if (top == NULL)
+		{
+			cout<<"Stack is empty."<<endl;
+		}
+		else
+		{
+			temp = top;
+			while (temp != NULL)
+			{
+				cout<<temp->data<<endl;
+				temp = temp->link;
+			}
+		}
+	}
+	
+};
+
+
+//--------------------------------Main function---------------------------------------------------
+
+int main()
+{
+
+Stack st;
+
+while(1)
+{
+	int choice,element,result;
+
+	cout<<"---------------------------------------------"<<endl;
+	cout<<"    PROGRAM FOR STACK IMPLEMENTATION    "<<endl;
+	cout<<"---------------------------------------------"<<endl;
+	cout<<"1. Push element"<<endl;
+	cout<<"2. Pop element"<<endl;
+	cout<<"3. Peek on stack"<<endl;
+	cout<<"4. Is stack empty???"<<endl;
+	cout<<"5. Is stack full???"<<endl;
+	cout<<"6. Count number of elements"<<endl;
+	cout<<"7. Display stack contents"<<endl;
+	cout<<"8. Exit"<<endl;
+	cout<<endl;
+	cout<<"Enter your choice: ";
+
+	cin>>choice;
+
+	switch(choice)
+	{
+		case 1:
+		cout<<"Enter element : ";
+		cin>>element;
+		if(st.push(element))
+		cout<<"Element "<<element<<" pushed successfully."<<endl;
+		break;
+		
+		case 2:
+		if(result = st.pop())
+		cout<<"Element "<< result <<" popped successfully."<<endl;
+		break;
+		
+		case 3:
+		if(result = st.peek())
+		cout<<"Top element is : "<<result<<endl;
+		break;
+		
+		case 4:
+		if(st.isEmpty())
+		cout<<"Stack is Empty."<<endl;
+		else
+		cout<<"Stack is not empty."<<endl;
+		break;
+		
+		case 5:
+		if(st.isFull())
+		cout<<"Stack is full."<<endl;
+		else
+		cout<<"Stack is not full."<<endl;
+		break;
+		
+		case 6:
+		result = st.count();
+		cout<<"Stack has "<<result<<" elements."<<endl;
+		break;
+		
+		case 7:
+		st.display();
+		break;
+		
+		case 8:
+		exit(0);
+
+		default:
+		cout<<"Enter a valid choice!!!"<<endl;
+		cout<<endl;
+
+	}
+	
+}
+
+return 0;
+}

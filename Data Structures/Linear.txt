@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+
+void Linear(int arr[], int n, int e)
+{
+
+for (int i=0; i<n; i++)
+{
+ if (arr[i] == e)
+ 
+     cout<<"Element found at index "<<i+1<<endl;
+    break;
+ 
+ 
+  else
+ 
+     cout<<"Element not found"<<endl;
+ 
+ 
+ 
+    // break; 
+} 
+
+}
+
+int main()
+{
+int i, element;
+int arr[7] = {16, 24, 8, 60, 35, 44, 51};
+
+int n = sizeof(arr)/sizeof(arr[0]); 
+
+cout<<"The array elements are: [ ";
+
+for (i=0; i<7; i++)
+{
+cout<<arr[i]<<" ";
+}
+
+cout<<"]"<<endl;
+
+cout << "Enter the element you want to search: "<<endl;
+cin >> element;
+
+Linear(arr, n, element);
+
+return 0;
+}

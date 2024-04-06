@@ -1,0 +1,367 @@
+#include<iostream>
+using namespace std;
+
+struct Node
+{
+	int data;
+	struct Node* left; 
+	struct Node* right;
+};
+
+class BinarySearchTree
+{
+
+	private:
+	struct Node* root = NULL; //global
+
+	/* struct Node* is a structure pointer or pointer 
+	to a structure which holds the address of any structure, 
+	like we have integer pointers */	
+	
+	public:
+
+//---------------Insert a node---------------------------------
+	void insert(int element)
+{
+	struct Node* temp; // create a temperory node to hold data to be inserted
+	struct Node* parent; // create a node to which the new node is to be added i.e a parent node of the new node
+	temp = new Node;
+	temp->data = element;
+	temp->left = NULL;
+	temp->right = NULL;
+	parent = root;
+	
+	if(root == NULL)
+	{
+		root = temp;
+	}
+	
+	else
+	{
+		struct Node* curr;   //create a node to keep track of the traversal, i.e the current node while traversing
+		curr = root;
+		while(curr)
+		{
+			parent = curr;
+			if (temp->data > curr->data)
+			{
+				curr = curr->right;
+			}
+			
+			else
+			{
+				curr = curr->left;
+			}			
+		}
+		
+		if (temp->data > parent->data)
+		{
+			parent -> right = temp;
+		}
+		
+		else
+		{
+			parent -> left = temp;
+		}
+	}
+	
+}
+//---------------Delete a node---------------------------------
+
+//---------------Inorder traversal-----------------------------
+void inorder (struct Node* t)
+{
+	if (t->left)
+	inorder(t->left);
+	cout << t->data;
+	if (t->right)
+	inorder(t -> right);
+}
+
+//---------------Preorder traversal----------------------------
+void preorder(struct Node* t)
+{
+if(t!=NULL)
+	{
+		cout << t->data << " ";
+		preorder(t->left);
+		preorder(t->right);
+	}
+}
+
+//---------------Postorder traversal---------------------------
+void postorder(struct Node *t)
+{
+	if(t!=NULL)
+	{
+		postorder(t->left);
+		postorder(t->right);
+		cout << t->data << " ";
+	}
+}
+
+//---------------Display BST-----------------------------------
+
+};
+
+int main()
+{
+
+BinarySearchTree bst;
+
+while(1)
+{
+	int choice, element;
+
+	cout<<"----------------------------------------------------"<<endl;
+	cout<<"    PROGRAM FOR BINARY SEARCH TREE IMPLEMENTATION    "<<endl;
+	cout<<"----------------------------------------------------"<<endl;
+	cout<<"1. Insert an element"<<endl;
+	cout<<"2. Delete an element"<<endl;
+	cout<<"3. Inorder tree traversal"<<endl;
+	cout<<"4. Preorder tree traversal"<<endl;
+	cout<<"5. Postorder tree traversal"<<endl;
+	cout<<"6. Display the BST"<<endl;
+	cout<<"7. Exit"<<endl;
+	cout<<endl;
+	cout<<"Enter your choice: ";
+
+	cin>>choice;
+
+	switch(choice)
+	{
+		case 1:
+		cout<<"Enter the data : ";
+		cin>>element;
+		cout<<endl;
+		bst.insert(element);
+		break;
+		
+		case 2:
+		break;
+		
+		case 3:
+		cout<<"Inorder tree traversal display is : ";
+		bst.inorder(root);
+		cout<<endl;
+		break;
+		
+		case 4:
+		cout<<"Preorder tree traversal display is : ";
+		bst.preorder(root);
+		cout<<endl;
+		break;
+		
+		case 5:
+		cout<<"Postorder tree traversal display is : ";
+		bst.postorder(root);
+		cout<<endl;
+		break;
+		
+		case 6:
+		break;
+		
+		case 7:
+		exit(0);
+
+		default:
+		cout<<"Enter a valid choice!!!"<<endl;
+		cout<<endl;
+
+	}
+	
+}
+
+return 0;
+}
+================================================================================================================================
+1. INSERT A NODE:
+
+
+struct Node
+{
+	int data;
+	Struct Node* left; 
+	Struct Node* right;
+}
+
+struct Node* root = NULL; //global
+
+/* struct Node* is a structure pointer or pointer to a structure which holds the address of any structure, like we have integer pointers */
+
+void insert(int d)
+{
+	struct Node* temp; // create a temperory node to hold data to be inserted
+	struct Node* parent; // create a node to which the new node is to be added i.e a parent node of the new node
+	t = new Node;
+	t->data = d;
+	t->left = NULL;
+	t->right = NULL;
+	parent = root;
+	
+	if(root == NULL)
+	{
+		root = t;
+	}
+	
+	else
+	{
+		struct Node* curr;   //create a node to keep track of the traversal, i.e the current node while traversing
+		curr = root;
+		while(curr)
+		{
+			parent = curr;
+			if (t->data > curr->data)
+			{
+				curr = curr->right;
+			}
+			
+			else
+			{
+				curr = curr->left;
+			}			
+		}
+		
+		if (t->data > parent->data)
+		{
+			parent -> right = t;
+		}
+		
+		else
+		{
+			parent -> left = t;
+		}
+	}
+	
+}
+
+2. DELETE A LEAF NODE:
+//curr is the target node to be deleted, parent is it's parent
+if(curr == parent-> right) // if the node is connected to the right of the parent 
+{ 
+	parent->right == NULL; 	//break the connection with parent
+}
+else					// if the node is connected to the left of the parent
+{
+	parent->left == NULL;
+}
+delete curr;
+
+
+3. DELETE A NODE WITH 1 CHILD:
+// node to be deleted is connected to the left of the current node and current node is to the right of the parent node
+if (curr ->left !=  NULL)
+{
+	if (curr == parent->right)
+	{
+		parent -> right  =curr->left;
+	}
+}
+curr->left == NULL;
+delete curr;
+
+---------------------------------------------------------
+// node to be deleted is connected to the left of the current node and current node is to the left of the parent node
+if (curr ->left !=  NULL)
+{
+	if (curr == parent->left)
+	{
+		parent -> left  =curr->left;
+	}
+}
+curr->left == NULL;
+delete curr;
+
+---------------------------------------------------------
+// node to be deleted is connected to the right of the current node and current node is to the right of the parent node
+if (curr ->right != NULL)
+{
+	if(curr == parent->right)
+	{
+		parent->right = curr->right;
+	}
+}
+curr ->right == NULL;
+delete curr;
+
+---------------------------------------------------------
+// node to be deleted is connected to the right of the current node and current node is to the left of the parent node
+if (curr ->right != NULL)
+{
+	if(curr == parent->left)
+	{
+		parent->left = curr->right;
+	}
+}
+curr ->right == NULL;
+delete curr;
+
+---------------------------------------------------------
+4. DELETE A NODE WITH 2 CHILDREN:
+
+/* Deleted node replaced with either highest value 
+in the left subtree or the least value in the right subtree */
+
+if (curr->left != NULL && curr->right != NULL)
+{
+	struct Node* t1, *t2;
+	t1 = curr -> right;
+	if (t1->left == NULL && t1->right == NULL)
+	{
+		curr -> data = t1->data;
+		curr->right = NULL;
+		delete t1;
+	}
+}
+
+---------------------------------------------------------
+
+if (curr->left != NULL && curr->right != NULL)
+{
+	struct Node* t1, *t2;
+	t1 = curr -> right;
+	if (t1->right == NULL && t1->left == NULL)
+	{
+		curr -> data = t1->data;
+		curr->right = t1 -> right;
+		t1->right = NULL;
+		delete t1;
+	}
+}
+
+
+5. INORDER TRAVERSAL
+
+void inorder (struct Node* t)
+{
+	if (t->left)
+	inorder(t->left);
+	cout << t->data;
+	if (t->right)
+	inorder(t -> right);
+}
+
+
+6. PREORDER TRAVERSAL
+void preorder(struct Node* t)
+{
+if(t!=NULL)
+	{
+		cout << t->data << " ";
+		preorder(t->left);
+		preorder(t->right);
+	}
+}
+
+7. POSTORDER TRAVERSAL
+void postorder(struct Node *t)
+{
+	if(t!=NULL)
+	{
+		postorder(t->left);
+		postorder(t->right);
+		cout << t->data << " ";
+	}
+}
+================================================================================================================================
+

@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+
+void swap(int* a, int* b)  
+{  
+    int t = *a;  
+    *a = *b;  
+    *b = t;  
+}  
+
+int Partition(int arr[], int low, int high)
+{
+    int pivot = arr[high]; 
+    int j = low;
+    
+    for(int i=low; i<high ;i++)
+    {
+        if (arr[i] <= pivot)
+        {
+            swap(&arr[i] , &arr[j]);  
+            j++;
+        }
+    }
+    
+    swap(&arr[j] , &arr[high]);
+    return j;
+}
+
+
+void QuickSort(int arr[], int low, int high)
+{
+int pIndex;
+
+if (low<high)
+{
+    pIndex = Partition (arr, low, high);
+    QuickSort(arr,low,pIndex-1);
+    QuickSort(arr,pIndex+1,high);
+}
+
+}
+
+
+void PrintSortedArray(int arr[], int n)
+{
+cout<< "The sorted array is: [ ";
+for (int i=0; i<n; i++)
+{
+cout<<arr[i]<<" ";
+}
+cout<<"]"<<endl;
+}
+
+
+
+int main()
+{
+int i;
+int arr[] = {16, 24, 8, 60, 35, 44, 51};
+int n=sizeof(arr)/sizeof(arr[0]);
+
+cout<<"The array elements are: [ ";
+
+for (i=0; i<7; i++)
+{
+cout<<arr[i]<<" ";
+}
+
+cout<<"]"<<endl;
+
+
+QuickSort(arr,0,n-1);
+
+PrintSortedArray(arr,n);
+
+return 0;
+}

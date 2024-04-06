@@ -1,0 +1,188 @@
+//Stack using Array
+//Stack is a linear data structure which follows LIFO(Last In First Out) rule
+
+
+#include<iostream>
+using namespace std;
+
+#define SIZE 10
+#define INIT -1
+
+class Stack
+{
+
+	private:
+		int arr[SIZE];
+		int top;
+	
+	public:
+		Stack()
+		{
+			top=INIT;
+		}		
+		
+//--------------------------------Push element----------------------------------------------------
+	bool push(int element)
+	{
+	if (isFull())
+	{
+		cout<<"Stack is full. Cannot push element"<<endl;
+		return false;
+	}
+	else
+	{
+		top++;
+		arr[top] = element;
+		return true;
+	}
+	
+	}
+	
+//--------------------------------Pop element-----------------------------------------------------
+	int pop()
+	{
+		int temp;
+		if (isEmpty())
+		{
+			cout<<"Stack is empty. "<<endl;
+			return false;
+		}
+		else
+		{
+			temp = arr[top];
+			top--;
+			return temp;
+		}
+	
+	}
+	
+//--------------------------------Peek on top-----------------------------------------------------
+	int peek()
+	{
+		int temp;
+		
+		if(isEmpty())
+		{
+			cout<<"Stack is Empty."<<endl;
+			return false;
+		}
+		else
+		{
+			temp = arr[top];
+		}
+		
+		return temp;
+		
+	}
+	
+//--------------------------------Is Empty--------------------------------------------------------
+	bool isEmpty()
+	{
+		return (top == -1 );
+	}
+	
+//--------------------------------Is Full---------------------------------------------------------
+	bool isFull()
+	{
+		return (top == SIZE-1);
+	}
+	
+//--------------------------------Count-----------------------------------------------------------
+	int count()
+	{
+		return top+1;	
+	}
+//--------------------------------Display---------------------------------------------------------	
+	void display()
+	{
+		for (int i = top; i >= 0; i--)
+		{
+		cout<<arr[i]<<endl;
+		}	
+	}
+	
+};
+
+
+//--------------------------------Main function---------------------------------------------------
+
+int main()
+{
+
+Stack st;
+
+while(1)
+{
+	int choice,element,result;
+
+	cout<<"---------------------------------------------"<<endl;
+	cout<<"    PROGRAM FOR STACK IMPLEMENTATION    "<<endl;
+	cout<<"---------------------------------------------"<<endl;
+	cout<<"1. Push element"<<endl;
+	cout<<"2. Pop element"<<endl;
+	cout<<"3. Peek on stack"<<endl;
+	cout<<"4. Is stack empty???"<<endl;
+	cout<<"5. Is stack full???"<<endl;
+	cout<<"6. Count number of elements"<<endl;
+	cout<<"7. Display stack contents"<<endl;
+	cout<<"8. Exit"<<endl;
+	cout<<endl;
+	cout<<"Enter your choice: ";
+
+	cin>>choice;
+
+	switch(choice)
+	{
+		case 1:
+		cout<<"Enter element : ";
+		cin>>element;
+		if(st.push(element))
+		cout<<"Element "<<element<<" pushed successfully."<<endl;
+		break;
+		
+		case 2:
+		if(result = st.pop())
+		cout<<"Element "<< result <<" popped successfully."<<endl;
+		break;
+		
+		case 3:
+		if(result = st.peek())
+		cout<<"Top element is : "<<result<<endl;
+		break;
+		
+		case 4:
+		if(st.isEmpty())
+		cout<<"Stack is Empty."<<endl;
+		else
+		cout<<"Stack is not empty."<<endl;
+		break;
+		
+		case 5:
+		if(st.isFull())
+		cout<<"Stack is full."<<endl;
+		else
+		cout<<"Stack is not full."<<endl;
+		break;
+		
+		case 6:
+		result = st.count();
+		cout<<"Stack has "<<result<<" elements."<<endl;
+		break;
+		
+		case 7:
+		st.display();
+		break;
+		
+		case 8:
+		exit(0);
+
+		default:
+		cout<<"Enter a valid choice!!!"<<endl;
+		cout<<endl;
+
+	}
+	
+}
+
+return 0;
+}
