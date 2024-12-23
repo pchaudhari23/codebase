@@ -1,0 +1,3 @@
+1.To run the sanity test, run command: npx cucumber-js <folder_name>.In this case: npx cucumber-js e2e
+2.The project must be running on localhost
+3.Install cucumber extension for vs code
